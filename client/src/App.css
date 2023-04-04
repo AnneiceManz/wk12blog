@@ -387,3 +387,9 @@ button.btn.btn-primary {
   font-size: 30px;
   font-weight: 600;
 }
+
+/* Homepage CSS  */
+
+.home {
+  display: flex;
+}
