@@ -393,3 +393,9 @@ button.btn.btn-primary {
 .home {
   display: flex;
 }
+
+/* Single Page CSS */
+
+.single{
+  display: flex;
+}
