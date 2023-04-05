@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faInstagram, faPinterest, faLinkedin  } from '@fortawesome/free-brands-svg-icons'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import IMAGES from "../images/IMAGES";
 
 const TopBar = () => {
@@ -56,7 +57,7 @@ const TopBar = () => {
             </li>
           </ul>
         )}
-        <i className="topSearchIcon fas fa-search"></i>
+        <FontAwesomeIcon icon={faMagnifyingGlass} className="icon" />
       </div>
     </div>
       <div id="detail" >
