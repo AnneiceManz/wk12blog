@@ -1,5 +1,8 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faTwitter, faInstagram, faPinterest, faLinkedin  } from '@fortawesome/free-brands-svg-icons'
+import IMAGES from "../images/IMAGES";
 
 const TopBar = () => {
   const user = true;
@@ -7,10 +10,11 @@ const TopBar = () => {
     <>
     <div className="top">
       <div className="topLeft">
-        <i className="topIcon fab fa-facebook-square"></i>
-        <i className="topIcon fab fa-instagram-square"></i>
-        <i className="topIcon fab fa-pinterest-square"></i>
-        <i className="topIcon fab fa-twitter-square"></i>
+      <FontAwesomeIcon icon={faFacebook} className="icon"/>
+      <FontAwesomeIcon icon={faInstagram} className="icon"/>
+      <FontAwesomeIcon icon={faPinterest} className="icon"/>
+      <FontAwesomeIcon icon={faTwitter} className="icon"/>
+      <FontAwesomeIcon icon={faLinkedin} className="icon"/>
       </div>
       <div className="topCenter">
         <ul className="topList">
@@ -34,7 +38,7 @@ const TopBar = () => {
           <Link className="link" to="/settings">
             <img
               className="topImg"
-              src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              src={IMAGES.anneiceavatar}
               alt=""
             />
           </Link>
