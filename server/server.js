@@ -82,10 +82,10 @@ app.delete('/api/posts/:post_id', async (req, res) => {
 //A put request - Update a post 
 app.put('/api/posts/:post_id', async (req, res) =>{
     const post_id = req.params.post_id
-    const updatedPost = { post_id: req.body.post_id, image_url: req.body.image_url, title: req.body.title, post_text: req.body.post_text, posted: req.body.posted}
+    const updatedPost = { image_url: req.body.image_url, title: req.body.title, post_text: req.body.post_text, posted: req.body.posted}
     console.log("In the server from the url - the post id", post_id);
     console.log("In the server, from the react - the post to be edited", updatedPost);
-    const query = `UPDATE post SET image_url=$1, title=$2, post_text=$3, posted=$4 WHERE post_id=${post_id} RETURNING *`;
+    const query = `UPDATE posts SET image_url=$1, title=$2, post_text=$3, posted=$4 WHERE post_id=${post_id} RETURNING *`;
     const values = [updatedPost.image_url, updatedPost.title, updatedPost.post_text, updatedPost.posted];
     try {
       const updated = await db.query(query, values);
