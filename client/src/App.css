@@ -141,6 +141,14 @@ button.btn.btn-primary {
   cursor: pointer;
 }
 
+/* Outlet */
+
+/* #detail {
+  flex: 9;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+} */
 
 /* Header CSS */
 

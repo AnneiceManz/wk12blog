@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const TopBar = () => {
   const user = true;
   return (
+    <>
     <div className="top">
       <div className="topLeft">
         <i className="topIcon fab fa-facebook-square"></i>
@@ -14,15 +15,15 @@ const TopBar = () => {
       <div className="topCenter">
         <ul className="topList">
           <li className="topListItem">
-            <Link className="link" to="/">
+            <Link className="link" to="/home">
               HOME
             </Link>
           </li>
           <li className="topListItem">ABOUT</li>
           <li className="topListItem">CONTACT</li>
           <li className="topListItem">
-            <Link className="link" to="/write">
-              WRITE
+            <Link className="link" to="/newpost">
+              NEW POST
             </Link>
           </li>
           {user && <li className="topListItem">LOGOUT</li>}
@@ -54,6 +55,10 @@ const TopBar = () => {
         <i className="topSearchIcon fas fa-search"></i>
       </div>
     </div>
+      <div id="detail" >
+        <Outlet />
+      </div>
+    </>
   );
 };
 

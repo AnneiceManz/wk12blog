@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Posts from "../components/Posts";
 import Sidebar from "../components/Sidebar";
+import { Outlet } from "react-router-dom";
 
 const Homepage = () => {
   const location = useLocation();
