@@ -162,10 +162,10 @@ app.delete('/api/users/:user_id', async (req, res) => {
 
 //A put request - Update a user
 app.put('/api/users/:user_id', async (req, res) =>{
-    //console.log(req.params);
-    //This will be the id that I want to find in the DB - the student to be updated
+    const salt = await bcrypt.genSalt(10);
+    const hashedPass = await bcrypt.hash(req.body.password, salt);
     const user_id = req.params.user_id
-    const updatedUser = { user_id: req.body.user_id, username: req.body.username, email: req.body.email, password: req.body.password, profile_pic: req.body.profile_pic}
+    const updatedUser = { user_id: req.body.user_id, username: req.body.username, email: req.body.email, password: hashedPass, profile_pic: req.body.profile_pic}
     console.log("In the server from the url - the user id", user_id);
     console.log("In the server, from the react - the user to be edited", updatedUser);
     const query = `UPDATE users SET username=$1, email=$2, password=$3, profile_pic=$4 WHERE user_id=${user_id} RETURNING *`;
