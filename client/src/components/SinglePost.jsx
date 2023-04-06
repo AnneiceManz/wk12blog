@@ -1,7 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare, faTrash  } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 const SinglePost = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const postId = location.pathname.split("/")[2];
+  // console.log(postId)
+
+  const [post, setPost] = useState([]);
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
+  const [updateMode, setUpdateMode] = useState(false);
+
+  const getBlogPost = () => {
+    fetch(`http://localhost:8080/api/posts/${postId}`)
+      .then((response) => response.json())
+      .then((posts) => {
+        // console.log(post)
+        setPost(posts);
+      });
+  };
+
+  useEffect(() => {
+    getBlogPost();
+  }, [post]);
+
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
@@ -11,10 +38,10 @@ const SinglePost = () => {
           alt=""
         />
         <h1 className="singlePostTitle">
-          Lorem ipsum dolor
+          {post.title}Title
           <div className="singlePostEdit">
-            <i className="singlePostIcon far fa-edit"></i>
-            <i className="singlePostIcon far fa-trash-alt"></i>
+            <FontAwesomeIcon icon={faPenToSquare} className="singlePostIcon" />
+            <FontAwesomeIcon icon={faTrash} className="singlePostIcon" />
           </div>
         </h1>
         <div className="singlePostInfo">
@@ -26,38 +53,9 @@ const SinglePost = () => {
               </Link>
             </b>
           </span>
-          <span>1 day ago</span>
+          <span>Posted {new Date(post.posted).toDateString()}</span>
         </div>
-        <p className="singlePostDesc">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error
-          quibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!
-          Voluptatum necessitatibus eum beatae, adipisci voluptas a odit modi
-          eos! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste
-          error quibusdam ipsa quis quidem doloribus eos, dolore ea iusto
-          impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas a
-          odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-          iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-          a odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-          iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-          a odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-          iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-          a odit modi eos!
-          <br />
-          <br />
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error
-          quibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!
-          Voluptatum necessitatibus eum beatae, adipisci voluptas a odit modi
-          eos! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste
-          error quibusdam ipsa quis quidem doloribus eos, dolore ea iusto
-          impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas a
-          odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-          iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-          a odit modi eos! Lorem, ipsum dolor sit amet consectetur.
-        </p>
+        <p className="singlePostDesc">{post.post_text}</p>
       </div>
     </div>
   );
