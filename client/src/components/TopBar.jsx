@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faInstagram, faPinterest, faLinkedin  } from '@fortawesome/free-brands-svg-icons'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import IMAGES from "../images/IMAGES";
+import { AuthContext } from "../context/authContext";
 
-const TopBar = () => {
-  const user = true;
+const TopBar = (props) => {
+  const { currentUser, logout } = useContext(AuthContext)
   return (
     <>
     <div className="top">
@@ -31,11 +32,11 @@ const TopBar = () => {
               NEW POST
             </Link>
           </li>
-          {user && <li className="topListItem">LOGOUT</li>}
+          {currentUser && <li className="topListItem" onClick={logout}>LOGOUT</li>}
         </ul>
       </div>
       <div className="topRight">
-        {user ? (
+        {currentUser ? (
           <Link className="link" to="/settings">
             <img
               className="topImg"
