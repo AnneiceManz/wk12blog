@@ -5,6 +5,7 @@ import { faFacebook, faTwitter, faInstagram, faPinterest, faLinkedin  } from '@f
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import IMAGES from "../images/IMAGES";
 import { AuthContext } from "../context/authContext";
+import { Image } from 'semantic-ui-react'
 
 const TopBar = (props) => {
   const { currentUser, logout } = useContext(AuthContext)
@@ -35,13 +36,12 @@ const TopBar = (props) => {
       </div>
       <div className="topRight">
         {currentUser ? (
-          <Link className="link" to="/settings">
-            <img
-              className="topImg"
-              src={IMAGES.anneiceavatar}
+            <Image
+            avatar
+            size="mini"
+              src={currentUser.profile_pic}
               alt=""
             />
-          </Link>
         ) : (
           <ul className="topList">
             <li className="topListItem">

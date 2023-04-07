@@ -1,52 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import IMAGES from '../images/IMAGES'
+import { AuthContext } from "../context/authContext";
+import { Image } from "semantic-ui-react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faTwitter, faInstagram, faPinterest, faLinkedin  } from '@fortawesome/free-brands-svg-icons'
 
 const Sidebar = () => {
+  const { currentUser, logout } = useContext(AuthContext)
   return (
     <div className="sidebar">
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME</span>
-        <img
-          src={IMAGES.anneiceavatar}
+        <Image
+        rounded
+        size="medium"
+          src={currentUser.profile_pic}
           alt=""
         />
         <p>
-          Laboris sunt aute cupidatat velit magna velit ullamco dolore mollit
-          amet ex esse.Sunt eu ut nostrud id quis proident.
+        League chase spirits mizzenmast gangplank hulk handsomely yo-ho-ho snow bilge water. Landlubber or just lubber ye hands dead men tell no tales rutters bilge no prey, no pay hempen halter Gold Road skysail. Keelhaul fore parrel matey hempen halter hail-shot Buccaneer boatswain mizzen yawl.
         </p>
       </div>
       <div className="sidebarItem">
         <span className="sidebarTitle">CATEGORIES</span>
         <ul className="sidebarList">
           <li className="sidebarListItem">
-            <Link className="link" to="/posts?cat=Life">
+            <Link className="catlink" to="/posts?cat=Life">
               Life
             </Link>
           </li>
           <li className="sidebarListItem">
-            <Link className="link" to="/posts?cat=Music">
-              Music
+            <Link className="catlink" to="/posts?cat=Broadway">
+              Broadway
             </Link>
           </li>
           <li className="sidebarListItem">
-            <Link className="link" to="/posts?cat=Sport">
-              Sport
+            <Link className="catlink" to="/posts?cat=Movies">
+              Movies
             </Link>
           </li>
           <li className="sidebarListItem">
-            <Link className="link" to="/posts?cat=Style">
-              Style
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link className="link" to="/posts?cat=Tech">
-              Tech
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link className="link" to="/posts?cat=Cinema">
-              Cinema
+            <Link className="catlink" to="/posts?cat=Hamilton">
+              Hamilton
             </Link>
           </li>
         </ul>
@@ -54,10 +50,11 @@ const Sidebar = () => {
       <div className="sidebarItem">
         <span className="sidebarTitle">FOLLOW US</span>
         <div className="sidebarSocial">
-          <i className="sidebarIcon fab fa-facebook-square"></i>
-          <i className="sidebarIcon fab fa-instagram-square"></i>
-          <i className="sidebarIcon fab fa-pinterest-square"></i>
-          <i className="sidebarIcon fab fa-twitter-square"></i>
+        <FontAwesomeIcon icon={faFacebook} className="sidebarIcon"/>
+      <FontAwesomeIcon icon={faInstagram} className="sidebarIcon"/>
+      <FontAwesomeIcon icon={faPinterest} className="sidebarIcon"/>
+      <FontAwesomeIcon icon={faTwitter} className="sidebarIcon"/>
+      <FontAwesomeIcon icon={faLinkedin} className="sidebarIcon"/>
         </div>
       </div>
     </div>

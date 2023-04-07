@@ -9,7 +9,6 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Single from "./pages/Single";
 import NewPost from "./pages/NewPost";
-import Settings from "./pages/Settings";
 import AuthContextProvider from "./context/authContext";
 
 const router = createBrowserRouter([
@@ -36,10 +35,6 @@ const router = createBrowserRouter([
       {
         path: "newpost",
         element: <NewPost />,
-      },
-      {
-        path: "settings",
-        element: <Settings />,
       },
     ],
   },
