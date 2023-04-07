@@ -12,12 +12,21 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME</span>
-        <Image
-        rounded
-        size="medium"
-          src={currentUser.profile_pic}
-          alt=""
-        />
+          { currentUser ? (
+                    <Image
+                    rounded
+                    size="medium"
+                      src={currentUser.profile_pic}
+                      alt=""
+                    />
+          ): (
+           <Image 
+           rounded
+           size="medium"
+           src={IMAGES.anneiceavatar}
+           alt=""
+           />
+          )}
         <p className="sidebarP">
         League chase spirits mizzenmast gangplank hulk handsomely yo-ho-ho snow bilge water. Landlubber or just lubber ye hands dead men tell no tales rutters bilge no prey, no pay hempen halter Gold Road skysail. Keelhaul fore parrel matey hempen halter hail-shot Buccaneer boatswain mizzen yawl.
         </p>
