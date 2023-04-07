@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AuthContext } from "../context/authContext";
+import { Form, Button, Segment, Header} from 'semantic-ui-react'
 
 const Login = () => {
   const [input, setInputs] = useState({
@@ -26,14 +27,6 @@ const Login = () => {
         setError(error);
         return;
       }
-      // if (res.status === 404) {
-      //   setError(resBody);
-      //   return;
-      // }
-      // if (res.status === 400) {
-      //   setError(resBody);
-      //   return;
-      // }
       navigate("/");
     } catch (error) {
       console.error(error.message);
@@ -41,10 +34,11 @@ const Login = () => {
   };
 
   return (
-    <div className="auth">
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input
+    <div className="login">
+    <Segment textAlign="center" color="black" inverted size="massive">
+      <Header as='h1'>Login</Header>
+      <Form  size="huge" onSubmit={handleSubmit}>
+        <Form.Input
           required
           type="text"
           placeholder="username"
@@ -52,7 +46,7 @@ const Login = () => {
           value={input.username}
           onChange={handleChange}
         />
-        <input
+        <Form.Input
           required
           type="password"
           placeholder="password"
@@ -60,14 +54,15 @@ const Login = () => {
           value={input.password}
           onChange={handleChange}
         />
-        <button type="submit" className="btn-login">
+        <Button type="submit" color="grey">
           Login
-        </button>
+        </Button>
         <p style={{ color: "red" }}>{error}</p>
         <span>
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link className="link" to="/register">Register</Link>
         </span>
-      </form>
+      </Form>
+    </Segment>
     </div>
   );
 };

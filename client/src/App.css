@@ -195,17 +195,12 @@
   flex-direction: column;
 }
 
-/* .postInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
 
 .postCat {
   font-family: "Varela Round", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 11px;
-  color: #be9656;
+  color: goldenrod;
   line-height: 19px;
   margin-top: 15px;
   margin-right: 10px;
@@ -395,60 +390,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+  background-image: url("https://i.pinimg.com/originals/32/ea/9d/32ea9d8a6c7f957da4c185c03124da90.jpg");
   background-size: cover;
-}
-
-.loginTitle {
-  font-size: 50px;
-}
-
-.loginForm {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.loginForm > label {
-  margin: 10px 0;
-}
-
-.loginInput {
-  padding: 10px;
-  background-color: white;
-  border: none;
-  border-radius: 10px;
-}
-
-.loginInput:focus {
-  outline: none;
-}
-
-.loginButton {
-  margin-top: 20px;
-  cursor: pointer;
-  background-color: lightcoral;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.loginRegisterButton {
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background-color: teal;
-  cursor: pointer;
-  padding: 10px;
-  border: none;
-  color: white;
-  border-radius: 10px;
 }
 
 
