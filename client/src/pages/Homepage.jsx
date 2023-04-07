@@ -5,30 +5,34 @@ import Posts from "../components/Posts";
 import Sidebar from "../components/Sidebar";
 
 const Homepage = () => {
+const [posts, setPosts] = useState([]);
+
   const location = useLocation();
-  console.log(location);
+  const cat = location.search;
 
-  const [blogPosts, setBlogPosts] = useState([]);
-
-
-  const loadBlogPosts = () => {
-      // A function to fetch the list of students that will be load anytime that list change
-      fetch("http://localhost:8080/api/posts")
-          .then((response) => response.json())
-          .then((blogPosts) => {
-              setBlogPosts(blogPosts);
-          });
-  }
+  // make a request to backend to get posts
+  const getPosts = async () => {
+    try {
+      const respose = await fetch(`http://localhost:8080/api/posts${cat}`);
+      const posts = await respose.json();
+      console.log(posts);
+      posts.sort((a, b) => a.id - b.id);
+      console.log(posts);
+      setPosts(posts);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   useEffect(() => {
-      loadBlogPosts();
-  }, [blogPosts]);
+    getPosts();
+  }, [cat]);
 
   return (
     <div>
       <Header />
       <div className="home">
-        <Posts posts={blogPosts} />
+        <Posts posts={posts} />
         <Sidebar />
       </div>
     </div>

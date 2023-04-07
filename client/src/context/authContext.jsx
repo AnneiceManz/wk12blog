@@ -44,5 +44,5 @@ const AuthContextProvider = ({ children }) => {
   );
 };
 
-export { AuthContext };
+export  { AuthContext };
 export default AuthContextProvider;

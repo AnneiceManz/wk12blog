@@ -16,9 +16,9 @@ const Post = ({ post }) => {
         <span className="postTitle">{post.title}</span>
           </Link>
         <hr />
-        <span className="postDate">{new Date(post.posted).toDateString()}</span>
+        <span className="postDate">{new Date(post.date).toDateString()}</span>
       </div>
-      <p className="postDesc">{post.post_text}</p>
+      <p className="postDesc">{post.body}</p>
     </div>
   );
 };
