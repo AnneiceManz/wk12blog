@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare, faTrash  } from "@fortawesome/free-solid-svg-icons";
 import moment from 'moment'
 import { AuthContext } from '../context/authContext'
+import { Container, Divider, Header, Image, Segment, Icon } from 'semantic-ui-react'
 
 const SinglePost = () => {
   const [post, setPost] = useState({});
@@ -49,31 +50,35 @@ const SinglePost = () => {
   };
   return (
     <div className="single">
-      <div className="post-content">
+      <Container>
+
+      <Segment className="post-content">
         <div className="post-img">
-          {post.image_url && <img src={post.image_url} alt="" />}
+          {post.image_url && <Image size="huge" centered rounded src={post.image_url} alt="" />}
         </div>
-        <div className="user">
-          <div className="info">
-            <p>
+        <Container  textAlign="center" className="user">
+          <Segment.Group size="tiny" horizontal className="info">
+            <Segment >
               Written by:&nbsp;<span>{post.username}</span>
-            </p>
-            <p>Posted {moment(post.date).fromNow()}</p>
-          </div>
+            </Segment>
           {currentUser?.username === post.username && (
-            <div className="edit">
+            <Segment className="edit">
               <Link to={`/write?edit=${post.post_id}`} state={post}>
-                <FontAwesomeIcon icon={faPenToSquare} />
+                <Icon name="edit" size="large" color="blue" />
               </Link>
               <Link onClick={handleDelete}>
-                <FontAwesomeIcon icon={faTrash} />
+                <Icon name="trash" size="large" color="red" />
               </Link>
-            </div>
+            </Segment>
           )}
-        </div>
-        <h1>{post.title}</h1>
-        <p className="body">{post.body}</p>
-      </div>
+            <Segment>Posted {moment(post.date).fromNow()}</Segment>
+          </Segment.Group>
+        </Container>
+          <Divider />
+        <Header textAlign="center" as='h1'>{post.title}</Header>
+        <Container className="body">{post.body}</Container>
+      </Segment>
+      </Container>
     </div>
   );
 };
