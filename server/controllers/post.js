@@ -39,9 +39,9 @@ const addPost = async (req, res) => {
     if (!token) return res.status(401).json("Not authenticated");
 
     const userInfo = jwt.verify(token, "jwtkey");
-    console.log("userinfo", userInfo);
+    console.log("userinfo", userInfo.user_id);
 
-    const { title, body, image_url, category, date } = req.body;
+    const { title, body, image_url, category, user_id, date } = req.body;
     console.log(req.body);
     const q =
       "INSERT INTO posts (title, body, image_url, category, user_id, date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *";
@@ -50,7 +50,7 @@ const addPost = async (req, res) => {
       body,
       image_url,
       category,
-      userInfo.id,
+      user_id,
       date,
     ]);
     res.status(200).json(addedPost);
