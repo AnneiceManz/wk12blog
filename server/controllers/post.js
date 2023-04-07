@@ -5,12 +5,12 @@ const getPosts = async (req, res) => {
   try {
     if (req.query.category) {
       const { rows: posts } = await db.query(
-        "SELECT * FROM posts WHERE category = $1",
+        "SELECT * FROM posts WHERE category = $1 ORDER BY date DESC",
         [req.query.category]
       );
       return res.status(200).json(posts);
     } else {
-      const { rows: posts } = await db.query("SELECT * FROM posts");
+      const { rows: posts } = await db.query("SELECT * FROM posts ORDER BY date DESC");
       return res.status(200).json(posts);
     }
   } catch (error) {

@@ -273,18 +273,11 @@ button.btn.btn-primary {
   flex-direction: column;
 }
 
-.postImg {
-  width: 385px;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 7px;
-}
-
-.postInfo {
+/* .postInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 .postCat {
   font-family: "Varela Round", Arial, Helvetica, sans-serif;
