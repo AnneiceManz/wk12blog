@@ -1,31 +1,88 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Register = () => {
+  const [input, setInputs] = useState({
+    username: "",
+    email: "",
+    password: "",
+    profile_pic: "",
+  });
+
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setInputs({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:8080/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input),
+      });
+      const resBody = await res.json();
+      if (res.status === 409) {
+        setError(resBody);
+        return;
+      }
+      navigate("/login");
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  // make post request to appropriate endpoint
+
   return (
-    <div className="register">
-      <span className="registerTitle">Register</span>
-      <form className="registerForm">
-        <label>Username</label>
+    <div className="auth">
+      <h1>Register</h1>
+      <form onSubmit={handleSubmit}>
         <input
-          className="registerInput"
+          required
           type="text"
-          placeholder="Enter your username..."
+          placeholder="username"
+          name="username"
+          value={input.username}
+          onChange={handleChange}
         />
-        <label>Email</label>
         <input
-          className="registerInput"
-          type="text"
-          placeholder="Enter your email..."
+          required
+          type="email"
+          placeholder="email"
+          name="email"
+          value={input.email}
+          onChange={handleChange}
         />
-        <label>Password</label>
         <input
-          className="registerInput"
+          required
           type="password"
-          placeholder="Enter your password..."
+          placeholder="password"
+          name="password"
+          value={input.password}
+          onChange={handleChange}
         />
-        <button className="registerButton">Register</button>
+        <input
+          required
+          type="url"
+          placeholder="image url"
+          name="profile_pic"
+          value={input.profile_pic}
+          onChange={handleChange}
+        />
+        <button type="submit" className="btn-register">
+          Register
+        </button>
+        <p style={{ color: "red" }}>{error}</p>
+        <span>
+          Have an account? <Link to="/login">Login</Link>
+        </span>
       </form>
-      <button className="registerLoginButton">Login</button>
     </div>
   );
 };
