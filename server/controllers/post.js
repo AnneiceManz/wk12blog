@@ -72,8 +72,8 @@ const deletePost = async (req, res) => {
     console.log("userinfo", userInfo);
 
     const { post_id } = req.params;
-    const q = "DELETE FROM posts WHERE post_id = $1 and user_id = $2";
-    await db.query(q, [post_id, userInfo.id]);
+    const q = "DELETE FROM posts WHERE post_id = $1";
+    await db.query(q, [post_id]);
     res.status(200).json("Post has been deleted!");
   } catch (error) {
     console.log(error.message);
