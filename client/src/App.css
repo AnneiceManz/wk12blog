@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lily+Script+One&family=Rubik:wght@300&display=swap');
 
+.App {
+  font-family: 'Rubik', sans-serif
+}
+
 /* Top Bar CSS */
 
 .top {
@@ -113,7 +117,7 @@
   height: fit-content;
   margin: 20px;
   padding-bottom: 30px;
-  background-color: #fdfbfb;
+  background-color: rgb(73, 23, 23);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -130,13 +134,13 @@
   margin: 10px;
   padding: 5px;
   width: 80%;
-  border-top: solid 1px #a7a4a4;
-  border-bottom: solid 1px #a7a4a4;
+  border-top: solid 1px white;
+  border-bottom: solid 1px white;
   text-align: center;
   font-family: "Varela Round", sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 19px;
-  color: #222222;
+  color: goldenrod;
   font-weight: 600;
 }
 
@@ -148,6 +152,8 @@
 
 .sidebarItem > p {
   padding: 30px;
+  color: white;
+  text-align: center;
 }
 
 .sidebarList {
@@ -173,10 +179,16 @@
 .sidebarIcon {
   font-size: 16px;
   margin-left: 10px;
+  color: white;
+}
+
+.sidebarIcon:hover {
+  color: goldenrod;
+  cursor: pointer;
 }
 
 .catlink {
-  color: rgb(73, 23, 23);
+  color: white;
   text-decoration: none;
 }
 

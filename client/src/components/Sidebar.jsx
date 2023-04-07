@@ -18,7 +18,7 @@ const Sidebar = () => {
           src={currentUser.profile_pic}
           alt=""
         />
-        <p>
+        <p className="sidebarP">
         League chase spirits mizzenmast gangplank hulk handsomely yo-ho-ho snow bilge water. Landlubber or just lubber ye hands dead men tell no tales rutters bilge no prey, no pay hempen halter Gold Road skysail. Keelhaul fore parrel matey hempen halter hail-shot Buccaneer boatswain mizzen yawl.
         </p>
       </div>
