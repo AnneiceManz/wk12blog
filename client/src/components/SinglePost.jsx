@@ -49,7 +49,7 @@ const SinglePost = () => {
     }
   };
   return (
-    <div className="single">
+    <div className="singlePost">
       <Container>
 
       <Segment className="post-content">
