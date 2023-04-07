@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Segment, Form, Button, Header } from 'semantic-ui-react'
 
 const Register = () => {
   const [input, setInputs] = useState({
@@ -40,10 +41,11 @@ const Register = () => {
   // make post request to appropriate endpoint
 
   return (
-    <div className="auth">
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <input
+    <div className="register">
+      <Segment color="black" inverted textAlign="center" size="massive">
+      <Header>Register</Header>
+      <Form size="huge" onSubmit={handleSubmit}>
+        <Form.Input
           required
           type="text"
           placeholder="username"
@@ -51,7 +53,7 @@ const Register = () => {
           value={input.username}
           onChange={handleChange}
         />
-        <input
+        <Form.Input
           required
           type="email"
           placeholder="email"
@@ -59,7 +61,7 @@ const Register = () => {
           value={input.email}
           onChange={handleChange}
         />
-        <input
+        <Form.Input
           required
           type="password"
           placeholder="password"
@@ -67,7 +69,7 @@ const Register = () => {
           value={input.password}
           onChange={handleChange}
         />
-        <input
+        <Form.Input
           required
           type="url"
           placeholder="image url"
@@ -75,14 +77,15 @@ const Register = () => {
           value={input.profile_pic}
           onChange={handleChange}
         />
-        <button type="submit" className="btn-register">
+        <Button type="submit" >
           Register
-        </button>
+        </Button>
         <p style={{ color: "red" }}>{error}</p>
         <span>
-          Have an account? <Link to="/login">Login</Link>
+          Have an account? <Link to="/login" className="link">Login</Link>
         </span>
-      </form>
+      </Form>
+      </Segment>
     </div>
   );
 };
