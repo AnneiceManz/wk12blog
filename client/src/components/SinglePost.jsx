@@ -2,32 +2,32 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare, faTrash  } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 
 const SinglePost = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const postId = location.pathname.split("/")[2];
+  const post_id = location.pathname.split("/")[2];
   // console.log(postId)
 
-  const [post, setPost] = useState([]);
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
+  const [post, setPost] = useState({});
   const [updateMode, setUpdateMode] = useState(false);
 
-  const getBlogPost = () => {
-    fetch(`http://localhost:8080/api/posts/${postId}`)
-      .then((response) => response.json())
-      .then((posts) => {
-        // console.log(post)
-        setPost(posts);
-      });
+  const getBlogPost = async () => {
+    try {
+      const respose = await fetch(`http://localhost:8080/api/posts/${post_id}`);
+      const post = await respose.json();
+      setPost(post);
+      console.log(post);
+      setPost(post);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   useEffect(() => {
     getBlogPost();
-  }, [post]);
+  }, [post_id]);
 
   return (
     <div className="singlePost">
