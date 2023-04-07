@@ -24,7 +24,7 @@ const getPost = async (req, res) => {
     const { post_id } = req.params;
     // console.log(post_id);
     const q =
-      "SELECT post_id, users.username, posts.imgage_url, posts.body, posts.date, posts.category, posts.title FROM posts LEFT JOIN users ON posts.user_id=users.user_id WHERE post_id=$1";
+      "SELECT post_id, users.username, posts.image_url, posts.body, posts.date, posts.category, posts.title FROM posts LEFT JOIN users ON posts.user_id=users.user_id WHERE post_id=$1";
     const { rows: post } = await db.query(q, [post_id]);
     // console.log(post);
     res.status(200).json(post[0]);
@@ -41,14 +41,14 @@ const addPost = async (req, res) => {
     const userInfo = jwt.verify(token, "jwtkey");
     console.log("userinfo", userInfo);
 
-    const { title, body, imgage_url, category, date } = req.body;
+    const { title, body, image_url, category, date } = req.body;
     console.log(req.body);
     const q =
-      "INSERT INTO posts (title, body, imgage_url, category, user_id, date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *";
+      "INSERT INTO posts (title, body, image_url, category, user_id, date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *";
     const { rows: addedPost } = await db.query(q, [
       title,
       body,
-      imgage_url,
+      image_url,
       category,
       userInfo.id,
       date,
@@ -92,14 +92,14 @@ const updatePost = async (req, res) => {
     const userInfo = jwt.verify(token, "jwtkey");
     // console.log("userinfo", userInfo);
 
-    const { title, body, imgage_url, category, date } = req.body;
+    const { title, body, image_url, category, date } = req.body;
     console.log("req body", req.body);
     const q =
-      "UPDATE posts SET title=$1, body=$2, imgage_url=$3, category=$4, date=$5 WHERE post_id = $6 AND user_id = $7 RETURNING *";
+      "UPDATE posts SET title=$1, body=$2, image_url=$3, category=$4, date=$5 WHERE post_id = $6 AND user_id = $7 RETURNING *";
     const { rows: addedPost } = await db.query(q, [
       title,
       body,
-      imgage_url,
+      image_url,
       category,
       date,
       post_id,

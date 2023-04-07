@@ -5,15 +5,17 @@ import { Form, Button, Icon, Segment } from "semantic-ui-react";
 const NewPost = () => {
   const navigate = useNavigate();
   const state = useLocation().state;
+  // console.log("state", state);
   const [writePost, setWritePost] = useState(
     state || {
       title: "",
-      post_text: "",
+      body: "",
       image_url: "",
-      posted: new Date()
+      category: "",
+      date: new Date (),
     }
   );
-
+  // console.log(inputs);
   const handleChange = (e) => {
     setWritePost({ ...writePost, [e.target.name]: e.target.value });
   };
@@ -22,6 +24,7 @@ const NewPost = () => {
     return fetch("http://localhost:8080/api/posts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify(newPost)
     })
     .then((response) => {
@@ -39,6 +42,38 @@ const NewPost = () => {
       navigate("/home")
     }
   }
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     if (state) {
+  //       const response = await fetch(
+  //         `http://localhost:8080/api/posts/${state.post_id}`,
+  //         {
+  //           method: "PUT",
+  //           headers: { "Content-Type": "application/json" },
+  //           credentials: "include",
+  //           body: JSON.stringify(writePost),
+  //         }
+  //       );
+  //       const updated = await response.json();
+  //       // console.log(updated);
+  //       navigate("/home");
+  //     } else {
+  //       const response = await fetch(`http://localhost:8080/api/posts`, {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         credentials: "include",
+  //         body: JSON.stringify(writePost),
+  //       });
+  //       const updated = await response.json();
+  //       console.log(updated);
+  //       navigate("/home");
+  //     }
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
   return (
     <div className="write">
@@ -74,8 +109,17 @@ const NewPost = () => {
             width={2}
             type="date"
             label="Post Date"
-            name="posted"
-            value={writePost.posted}
+            name="date"
+            value={writePost.date}
+            onChange={handleChange}
+            required
+            />
+            <Form.Input 
+            width={2}
+            type="text"
+            label="Category"
+            name="category"
+            value={writePost.category}
             onChange={handleChange}
             required
             />
@@ -86,8 +130,8 @@ const NewPost = () => {
             label="Post"
             type="text"
             rows={16}
-            name="post_text"
-            value={writePost.post_text}
+            name="body"
+            value={writePost.body}
             onChange={handleChange}
             required
           />
