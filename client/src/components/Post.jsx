@@ -12,7 +12,7 @@ const Post = ({ post }) => {
           <span className="postCat">{category.name}</span>
           ))}
         </div> */}
-          <Link to={`/post/${post.post_id}`} className="link">
+          <Link to={`/posts/${post.post_id}`} className="link">
         <span className="postTitle">{post.title}</span>
           </Link>
         <hr />

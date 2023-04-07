@@ -21,7 +21,7 @@ const TopBar = (props) => {
       <div className="topCenter">
         <ul className="topList">
           <li className="topListItem">
-            <Link className="link" to="/home">
+            <Link className="link" to="/">
               HOME
             </Link>
           </li>

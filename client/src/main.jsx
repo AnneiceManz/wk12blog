@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import 'semantic-ui-css/semantic.min.css'
+import "semantic-ui-css/semantic.min.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Single from "./pages/Single";
 import NewPost from "./pages/NewPost";
 import Settings from "./pages/Settings";
+import AuthContextProvider from "./context/authContext";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "home",
+        path: "/",
         element: <Homepage />,
       },
       {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "post/:id",
+        path: "posts/:id",
         element: <Single />,
       },
       {
@@ -46,6 +47,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
   </React.StrictMode>
 );

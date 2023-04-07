@@ -36,10 +36,10 @@ const NewPost = () => {
     e.preventDefault()
     if (postNew.post_id) {
       updatePost(writePost)
-      navigate("/home")
+      navigate("/")
     } else {
       postNew(writePost)
-      navigate("/home")
+      navigate("/")
     }
   }
 

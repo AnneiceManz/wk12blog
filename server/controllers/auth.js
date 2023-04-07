@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
-  const { email, username, password } = req.body;
+  const { email, username, password, profile_pic } = req.body;
   try {
     // check if this is a user with an existing email or username
     const qSelect = "SELECT * FROM users WHERE email = $1 OR username = $2";
