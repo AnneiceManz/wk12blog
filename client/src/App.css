@@ -1,73 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Lily+Script+One&family=Rubik:wght@300&display=swap');
+
 .App {
-  min-height: 100vh;
-  background-color: rgb(238, 232, 232);
-  margin: 5px;
+  font-family: 'Rubik', sans-serif
 }
 
-.mybody {
+/* Top Bar CSS */
+
+.top {
+  width: 100%;
+  height: 50px;
+  background-color: rgb(73, 23, 23);
+  position: sticky;
+  top: 0;
   display: flex;
-  gap: 3em;
-  padding: 1em;
+  align-items: center;
+  z-index: 999;
+  font-family: 'Rubik', sans-serif;
 }
 
-a.navbar-brand {
-  margin-inline-start: -5em;
+.topLeft,
+.topRight {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.nav-link {
-  color: white !important;
-  margin-left: 5em;
+.icon {
+  font-size: 20px;
+  margin-right: 10px;
+  color: white;
+  cursor: pointer;
+}
+.icon:hover {
+  color: goldenrod;
 }
 
-.list-students {
-  text-align: center;
-  margin-top: 25px;
-  flex: 1
+.topCenter {
+  flex: 6;
 }
 
-ul {
-  list-style-type: none;
+.topList {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
+.topListItem {
+  margin-right: 20px;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+  color: white;
+}
 
-form {
+.topListItem:hover{
+    color: goldenrod;
+}
+
+.topImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: goldenrod;
+}
+
+/* Header CSS */
+
+.headerTitles {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: left;
-  margin-top: 3em;
-  flex: 1;
 }
 
-input[type=text] {
-  display: inline-block;
-  margin-top: -10px;
+.headerTitleSm {
+  position: absolute;
+  top: 18%;
+  font-size: 40px;
+  color: white;
+  font-family: 'Rubik', sans-serif;
+}
+
+.headerTitleLg {
+  position: absolute;
+  top: 20%;
+  font-size: 100px;
+  color: white;
+  font-family: 'Lily Script One', cursive;
+
+}
+
+.headerImg {
   width: 100%;
-  font-size: 15px;
-  border-radius: 2px;
-  border: 3px solid #98d0f1
+  height: 450px;
+  object-fit: cover;
 }
 
-button.btn.btn-primary {
-  margin-top: 25px;
+
+/* Sidebar CSS */
+
+.sidebar {
+  flex: 3;
+  height: fit-content;
+  margin: 20px;
+  padding-bottom: 30px;
+  background-color: rgb(73, 23, 23);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.myicon {
-  stroke: rgb(243, 121, 7);
-  color: rgb(243, 121, 7);
-  stroke-width: 10;
-  margin-right: 0.9em;
+.sidebarItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.form-label {
-  margin-bottom: 0 !important;
-  margin-top: 0.5em;
+.sidebarTitle {
+  margin: 10px;
+  padding: 5px;
+  width: 80%;
+  border-top: solid 1px white;
+  border-bottom: solid 1px white;
+  text-align: center;
+  font-family: "Varela Round", sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  color: goldenrod;
+  font-weight: 600;
 }
 
-.form-check {
-  margin-top: 1em;
+.sidebarItem > img {
+  margin-top: 15px;
+  width: 250px;
+  height: 250px;
 }
 
-.card-body {
-  margin-left: 2em;
-  margin-right: 2em;
+.sidebarItem > p {
+  padding: 30px;
+  color: white;
+  text-align: center;
+}
+
+.sidebarList {
+  list-style-type: none;
+  margin-bottom: 30px;
+}
+
+.sidebarListItem {
+  display: inline-block;
+  width: 50%;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.sidebarSocial {
+  margin-top: 15px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebarIcon {
+  font-size: 16px;
+  margin-left: 10px;
+  color: white;
+}
+
+.sidebarIcon:hover {
+  color: goldenrod;
+  cursor: pointer;
+}
+
+.catlink {
+  color: white;
+  text-decoration: none;
+}
+
+.catlink:hover {
+  color: goldenrod;
+}
+
+/* Posts CSS */
+
+.posts{
+  flex: 9;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+
+
+/* Post CSS */
+
+
+.postCat {
+  font-family: "Varela Round", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  color: goldenrod;
+  line-height: 19px;
+  margin-top: 15px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.postDesc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+
+/* Single Post CSS */
+
+.singlePost {
+  width: 72%;
+}
+
+.singlePostIcon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+
+/* Homepage CSS  */
+
+.home {
+  display: flex;
+}
+
+/* Single Page CSS */
+
+.single{
+  display: flex;
+}
+
+/* Register CSS */
+
+.register {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image:
+    url("https://i.pinimg.com/originals/32/ea/9d/32ea9d8a6c7f957da4c185c03124da90.jpg");
+  background-size: cover;
+}
+
+/* Login CSS */
+
+.login {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("https://i.pinimg.com/originals/32/ea/9d/32ea9d8a6c7f957da4c185c03124da90.jpg");
+  background-size: cover;
+}
+
+
+
+/* NewPost CSS */
+
+.write {
+  padding-top: 50px;
+}
+
+.writeImg {
+  margin-left: 150px;
+  width: 70vw;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.writeForm {
+  position: relative;
+}
+
+.writeFormGroup {
+  margin-left: 150px;
+  display: flex;
+  align-items: center;
+}
+
+.writeIcon {
+  width: 25px;
+  height: 25px;
+  font-size: 20px;
+  border: 1px solid;
+  border-radius: 50%;
+  color: rgb(129, 125, 125);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.writeInput {
+  font-size: 30px;
+  border: none;
+  padding: 20px;
+  width: 70vw;
+}
+
+.writeInput::placeholder {
+  color: rgb(189, 185, 185);
+  font-weight: 400;
+}
+
+.writeInput:focus {
+  outline-style: none;
+}
+
+.writeText {
+  width: 70vw;
+  height: 100vh;
+  font-family: inherit;
+  font-size: 20px;
+}
+
+.writeSubmit {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  color: white;
+  background-color: teal;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
